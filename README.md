@@ -1,6 +1,7 @@
 # Naukri App: Kotlin, Coroutines, MVVM, Ion, Remote Server API.
 # Project Overview
-# Screenshot : ![Untitled design (1)](https://github.com/user-attachments/assets/9ab98e10-48ec-485b-9802-83a7b63a2005)
+# Screenshot : 
+![Untitled design (1)](https://github.com/user-attachments/assets/80dcb9bb-8d70-4ef1-a6d6-bef76af60f65)
 
 - video link : https://youtu.be/svfJ-iWrBwI?feature=shared
 - apk link : https://drive.google.com/file/d/14AsbLaP85D4W4tfqEbtz7M0KZNZdK5OF/view?usp=drivesdk
