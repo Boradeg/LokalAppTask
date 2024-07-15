@@ -23,38 +23,45 @@ class FavoriteJobAdapter(private val items: List<MyJob2>, private val context: C
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        val item = items[position]
-        holder.locationTxt.text = item.jobPlace
-        holder.titleTxt.text=item.jobType
-        holder.companyTxt.text=item.companyName
-        holder.salaryTxt.text=item.totalSalary.toString()+" Rs"
-        // Determine which image to display based on position modulo 4
-        val imageResource = when (position % 4) {
-            0 -> R.drawable.img_1
-            1 -> R.drawable.img_2
-            2 -> R.drawable.img_3
-            3 -> R.drawable.img_4
-            else -> R.drawable.img_2 // Handle any unexpected cases
+        try {
+            val item = items[position]
+
+            // Setting default values or handling null cases
+            holder.locationTxt.text = item.jobPlace ?: "Unknown"
+            holder.titleTxt.text = item.jobType ?: "Unknown"
+            holder.companyTxt.text = item.companyName ?: "Unknown"
+            holder.salaryTxt.text = item.totalSalary.toString() + " Rs"
+
+            // Determine which image to display based on position modulo 4
+            val imageResource = when (position % 4) {
+                0 -> R.drawable.img_1
+                1 -> R.drawable.img_2
+                2 -> R.drawable.img_3
+                3 -> R.drawable.img_4
+                else -> R.drawable.img_2 // Handle any unexpected cases
+            }
+            holder.bookmarkImg.visibility = View.GONE
+            holder.imageView.setImageResource(imageResource)
+
+            holder.itemView.setOnClickListener {
+                val intent = Intent(context, DetailedActivity::class.java)
+                    .putExtra("company_name", item.companyName ?: "Unknown")
+                    .putExtra("experience", item.experience ?: "Unknown")
+                    .putExtra("salary_max", item.maxSalary.toString())
+                    .putExtra("salary_min", item.minSalary.toString())
+                    .putExtra("primary_details.Experience", item.experience ?: "Unknown")
+                    .putExtra("primary_details.Place", item.jobPlace ?: "Unknown")
+                    .putExtra("created_on", item.date ?: "Unknown")
+                    .putExtra("job_category", item.jobType ?: "Unknown")
+                    .putExtra("job_role", item.jobTitle ?: "Unknown")
+                    .putExtra("job_title", item.jobTitle ?: "Unknown")
+
+                context.startActivity(intent)
+            }
+        } catch (e: Exception) {
+            // Handle any exceptions gracefully (e.g., logging, fallback values)
+            e.printStackTrace()
         }
-        holder.bookmarkImg.visibility= View.GONE
-        holder.imageView.setImageResource(imageResource)
-        holder.itemView.setOnClickListener {
-
-            var intent= Intent(context, DetailedActivity::class.java)
-                .putExtra("company_name", item.companyName.toString())
-                .putExtra("experience", item.experience.toString())
-                .putExtra("salary_max", item.maxSalary.toString())
-                .putExtra("salary_min", item.minSalary.toString())
-                .putExtra("primary_details.Experience", item.experience.toString())
-                .putExtra("primary_details.Place", item.jobPlace.toString())
-                .putExtra("created_on", item.date.toString())
-                .putExtra("job_category", item.jobType)
-                .putExtra("job_role", item.jobTitle)
-                .putExtra("job_title", item.jobTitle)
-
-            context.startActivity(intent)
-        }
-
     }
 
     override fun getItemCount(): Int = items.size

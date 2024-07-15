@@ -22,11 +22,18 @@ class JobAdapter(private var items: List<Result>, private val context: Context, 
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = items[position]
-        val place = item.primary_details?.Place ?: "Mumbai"
-            holder.locationTxt.text = place
-        holder.titleTxt.text=item.job_category
-        holder.companyTxt.text=item.company_name
-        holder.salaryTxt.text=item.salary_max.toString()+" Rs"
+
+        // Handle null or default values for properties
+        val place = item?.primary_details?.Place ?: "Unknown"
+        val jobCategory = item?.job_category ?: "Unknown"
+        val companyName = item?.company_name ?: "Unknown"
+        val maxSalary = item?.salary_max ?: 0
+
+        holder.locationTxt.text = place
+        holder.titleTxt.text = jobCategory
+        holder.companyTxt.text = companyName
+        holder.salaryTxt.text = "$maxSalary Rs"
+
         // Determine which image to display based on position modulo 4
         val imageResource = when (position % 4) {
             0 -> R.drawable.img_1
@@ -36,29 +43,29 @@ class JobAdapter(private var items: List<Result>, private val context: Context, 
             else -> R.drawable.img_2 // Handle any unexpected cases
         }
         holder.imageView.setImageResource(imageResource)
+
         holder.itemView.setOnClickListener {
-
-            var intent=Intent(context, DetailedActivity::class.java)
-                .putExtra("company_name", item.company_name)
-            .putExtra("experience", item.experience.toString())
-            .putExtra("job_hours", item.job_hours.toString())
-            .putExtra("job_role", item.job_role.toString())
-            .putExtra("city_location", item.city_location.toString())
-            .putExtra("salary_max", item.salary_max.toString())
-            .putExtra("salary_min", item.salary_min.toString())
-            .putExtra("primary_details.Experience", item.primary_details.Experience.toString())
-            .putExtra("primary_details.Place", item.primary_details.Place.toString())
-            .putExtra("created_on", item.created_on.toString())
-            .putExtra("job_category", item.job_category)
-            .putExtra("job_role", item.job_role)
-            .putExtra("job_title", item.title)
-
+            val intent = Intent(context, DetailedActivity::class.java)
+                .putExtra("company_name", companyName)
+                .putExtra("experience", item?.experience?.toString() ?: "Unknown")
+                .putExtra("job_hours", item?.job_hours?.toString() ?: "Unknown")
+                .putExtra("job_role", item?.job_role?.toString() ?: "Unknown")
+                .putExtra("city_location", item?.city_location?.toString() ?: "Unknown")
+                .putExtra("salary_max", maxSalary?.toString())
+                .putExtra("salary_min", item.salary_min?.toString() ?: "Unknown")
+                .putExtra("primary_details.Experience", item.primary_details?.Experience?.toString() ?: "Unknown")
+                .putExtra("primary_details.Place", place)
+                .putExtra("created_on", item?.created_on?.toString() ?: "06/10/2023")
+                .putExtra("job_category", jobCategory)
+                .putExtra("job_role", item.job_role ?: "Unknown")
+                .putExtra("job_title", item.title ?: "Unknown")
 
             context.startActivity(intent)
         }
+
         holder.bookmarkImg.setOnClickListener {
-          holder.bookmarkImg.setImageResource(R.drawable.bookmark)
-              mainActivity.insertData(item)
+            holder.bookmarkImg.setImageResource(R.drawable.bookmark)
+            mainActivity.insertData(item)
         }
     }
 

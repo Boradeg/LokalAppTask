@@ -58,14 +58,15 @@ class MainActivity : AppCompatActivity() {
 
             list.addAll(newList)
             adapter?.notifyDataSetChanged()
-            binding.progressBar.visibility = View.GONE
+            //
             isLoading = false
+            binding.progressBar.visibility = View.GONE
         }
         viewModel.favoriteJobs.observe(this) {
             favoriteList.clear()
             favoriteList.addAll(it)
             adapter2?.notifyDataSetChanged()
-            binding.progressBar.visibility = View.GONE
+
         }
 
         //set bottomNavBar

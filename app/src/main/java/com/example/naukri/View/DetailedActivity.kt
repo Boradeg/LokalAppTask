@@ -25,7 +25,7 @@ class DetailedActivity : AppCompatActivity() {
         val salaryMax = intent.getStringExtra("salary_max")
         val salaryMin = intent.getStringExtra("salary_min")
         val primaryPlace = intent.getStringExtra("primary_details.Place")
-        val createdOn = intent.getStringExtra("created_on")
+        val createdOn = intent.getStringExtra("created_on")?:"06/10/1999/1"
         val job_category = intent.getStringExtra("job_category")
          job_title = intent.getStringExtra("job_title").toString()
 
