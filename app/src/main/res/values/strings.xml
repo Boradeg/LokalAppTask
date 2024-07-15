@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Naukri</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="about"><![CDATA[FedEx delivers across the globe, from a package to a plane, their network\'s a robe. Nike\'s swoosh, a mark of just do it, for athletes and weekend warriors, a spirit to ignite. Tesla\'s electric cars zoom with a hum, reducing emissions, a future to come. The LEGO brick, a childhood delight, building creations, both day and through night. Disney\'s magic, in movies and parks, bringing joy and laughter, leaving its marks. Ben & Jerry\'s ice cream, with chunks and swirls, perfect for summer days, chasing away the world\'s churls. Netflix\'s streaming, a binge-watching dream, countless shows and movies, a digital stream. L\'Oreal\'s beauty products, from lipsticks to creams, enhancing confidence, fulfilling self-esteem\'s schemes. Sony\'s PlayStation, a gamer\'s domain, virtual worlds to conquer, never a moment of mundane pain. The Mayo Clinic, a beacon of health, world-renowned doctors, ensuring top-notch wealth (referring to well-being, not monetary wealth).]]></string>
+    <string name="fedex_delivers_across_the_globe_from_a_package_to_a_plane_their_network_s_a_robe">FedEx delivers across the globe, from a package to a plane, their network\'s a robe.</string>
+</resources>

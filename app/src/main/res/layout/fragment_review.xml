@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.ReviewFragment">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:textSize="14dp"
+        android:textColor="@color/grey10"
+        android:text="1.Stardew Valley is a charming and relaxing farming simulator that quickly sucks you into its peaceful world. With a variety of crops and animals to raise, crafting to explore, and relationships to build with the quirky townsfolk, there's always something to do.\n\n 2.The pixel art style is delightful, and the soundtrack is incredibly soothing. However, the time management aspect can feel a bit grindy at times." />
+
+
+</FrameLayout>
